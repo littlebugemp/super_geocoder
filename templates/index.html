@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
+        <title>Super Geocoder</title>
+    </head>
+    <body class="container p-3">
+        <h2>Super Geocoder</h2>
+        <p>Please upload your CSV file. The value containing address should be in a column named address or Address</p>
+        <form method="post" action="{{ url_for('success')}}" enctype = "multipart/form-data">
+            <input type="file" name="file_upload" required>
+            <input type="submit" value="Submit">
+            <br>
+            {% for table in tables %}
+                {{titles[loop.index]}}
+                {{ table|safe }}
+            {% endfor %}
+        
+        </form>
+    </body>
+</html>
